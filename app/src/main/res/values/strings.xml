@@ -7,4 +7,7 @@
     <string name="action_setting">Настройки</string>
     <string name="new_note">Новая заметка</string>
     <string name="save">SAVE</string>
+    <string name="action_1">action1</string>
+    <string name="action_2">action2</string>
+    <string name="action_3">action3</string>
 </resources>

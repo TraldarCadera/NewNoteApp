@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, new NoteListFragment(), "NoteListFragment")
+                .replace(R.id.container, new NoteAdapter(fragment), "NoteListFragment")
                 .addToBackStack(null)
                 .commit();
         Toolbar toolbar = findViewById(R.id.toolbar_main);
@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack(null)
                             .commit();
 
-                    Toast.makeText(MainActivity.this, "New note", Toast.LENGTH_SHORT).show();
-                    return true;
-
                 } else {
                     getSupportFragmentManager()
                             .beginTransaction()
@@ -41,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack(null)
                             .commit();
 
-                    Toast.makeText(MainActivity.this, "New note", Toast.LENGTH_SHORT).show();
-                    return true;
                 }
+                Toast.makeText(MainActivity.this, "New note", Toast.LENGTH_SHORT).show();
+                return true;
             }
 
 
