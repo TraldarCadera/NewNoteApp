@@ -1,58 +1,99 @@
 package com.example.newnoteapp;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolder> {
 
     private final ArrayList<NoteStructure> data = new ArrayList<>();
-
-    private OnNoteClickedListener listener;
-
-    private OnNoteLongClickedListener longClickListener;
-
     private final Fragment fragment;
+    private OnNoteClickedListener listener;
+    private OnNoteLongClickedListener longClickListener;
 
     public NoteAdapter(Fragment fragment) {
         this.fragment = fragment;
     }
 
 
+    public void setNotes(List<NoteStructure> toSet) {
+        data.clear();
+        data.addAll(toSet);
+    }
 
-    @NonNull
-    @Override
-    public NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public void addNote(NoteStructure note) {
+        data.add(note);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
 
+
+    @NonNull
+    @Override
+    public NoteAdapter.NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_note_list, parent, false);
+
+        return new NotesViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull NoteAdapter.NotesViewHolder holder, int position) {
+        NoteStructure note = data.get(position);
+
+        holder.getTitle().setText(note.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public OnNoteClickedListener getListener() {
+        return listener;
+    }
 
-        listContainer = view.findViewById(R.id.list_container_view);
+    public void setListener(OnNoteClickedListener listener) {
+        this.listener = listener;
+    }
 
+    public OnNoteLongClickedListener getLongClickListener() {
+        return longClickListener;
+    }
 
+    public void setLongClickListener(OnNoteLongClickedListener longClickListener) {
+        this.longClickListener = longClickListener;
+    }
+
+    public int removeNote(NoteStructure selectedNote) {
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).equals(selectedNote)) {
+                data.remove(i);
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int updateNote(NoteStructure note) {
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).equals(note)) {
+                data.set(i, note);
+                return i;
+            }
+        }
+        return -1;
     }
 
     interface OnNoteClickedListener {
@@ -61,12 +102,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolde
 
     interface OnNoteLongClickedListener {
         void onNoteLongClicked(NoteStructure note);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_note_list, container, false);
     }
 
     class NotesViewHolder extends RecyclerView.ViewHolder {
@@ -109,6 +144,4 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolde
             return title;
         }
     }
-}
-
 }

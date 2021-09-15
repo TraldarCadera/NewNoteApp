@@ -3,22 +3,22 @@ package com.example.newnoteapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Objects;
+
 public class NoteStructure implements Parcelable {
 
-    private  int id;
+    private String id;
     private String date;
     private String title;
-    private String description;
 
 
-    public NoteStructure(int id, String date, String title, String description) {
+    public NoteStructure(String id, String date, String title) {
         this.id = id;
         this.date = date;
         this.title = title;
-        this.description = description;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -30,11 +30,7 @@ public class NoteStructure implements Parcelable {
         this.title = title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -44,10 +40,6 @@ public class NoteStructure implements Parcelable {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public static final Creator<NoteStructure> CREATOR = new Creator<NoteStructure>() {
@@ -62,8 +54,9 @@ public class NoteStructure implements Parcelable {
         }
     };
 
-
     protected NoteStructure(Parcel in) {
+        id = in.readString();
+        title = in.readString();
     }
 
     @Override
@@ -72,6 +65,16 @@ public class NoteStructure implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
+    public void writeToParcel(Parcel dest, int flag) {
+        dest.writeString(id);
+        dest.writeString(title);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NoteStructure note = (NoteStructure) o;
+        return Objects.equals(id, note.id) && Objects.equals(title, note.title);
     }
 }

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, new NoteAdapter(fragment), "NoteListFragment")
+                .replace(R.id.container, new NoteAdapter(), "NoteListFragment")
                 .addToBackStack(null)
                 .commit();
         Toolbar toolbar = findViewById(R.id.toolbar_main);
