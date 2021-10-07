@@ -1,4 +1,4 @@
-package com.example.newnoteapp;
+package com.example.newnoteapp.domain;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.newnoteapp.R;
 
 import java.util.ArrayList;
 import java.util.List;

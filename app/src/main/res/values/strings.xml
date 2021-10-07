@@ -10,4 +10,27 @@
     <string name="action_1">action1</string>
     <string name="action_2">action2</string>
     <string name="action_3">action3</string>
+    <string name="action_notes">Notes</string>
+    <string name="action">Action</string>
+    <string name="alert">Simple Alert</string>
+    <string name="alert_title">Alert Dialog Title</string>
+    <string name="alert_message">Alert Dialog Message</string>
+    <string name="positive">Positive</string>
+    <string name="negative">Negative</string>
+    <string name="neutral">Neutral</string>
+    <string name="alert_list">List Alert Dialog</string>
+    <string name="alert_single_choice">Alert Single Choice</string>
+    <string name="alert_multiple_choice">Alert multiple choice</string>
+    <string name="alert_custom_view">Alert Custom View</string>
+    <string name="alert_dialog_fragment">Alert Dialog Fragment</string>
+    <string name="custom_dialog_fragment">Custom Dialog Fragment</string>
+    <string name="bottom_sheet_dialog_fragment">Bottom Sheet</string>
+    <string name="action_info">Info</string>
+    <string name="action_add">Add</string>
+    <string name="action_delete_all">Delete all</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_update">Update</string>
+    <string name="long_text">LOOOOOOONG TEEEEEEXT</string>
+
+
 </resources>

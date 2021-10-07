@@ -1,4 +1,4 @@
-package com.example.newnoteapp;
+package com.example.newnoteapp.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.newnoteapp.R;
 import com.google.android.material.button.MaterialButton;
 
 
